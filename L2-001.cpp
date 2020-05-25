@@ -21,7 +21,7 @@ int dis[MAXN];
 int w[MAXN][MAXN];
 int cw[MAXN];
 int pre[MAXN], weight[MAXN], num[MAXN];
-
+// pre 路径记录; weight 救援人员数记录; num 路径数记录
 set<int> vised;
 
 int least()
