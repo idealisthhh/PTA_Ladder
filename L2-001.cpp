@@ -32,7 +32,7 @@ int least()
 		if(vised.count(i) == 0)
 			if (dis[i] < res)
 			{
-				resi = i;
+			    resi = i;
 				res = dis[i];
 			}
 
