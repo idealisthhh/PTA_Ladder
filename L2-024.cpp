@@ -96,7 +96,7 @@ int main()
 
   for(;T;--T)
 		solve();
-  
+   
   return 0;
 }
 
