@@ -3,7 +3,12 @@
  * @Github: harveyleeh@163.com
  * @Blog: harveyl.cn
  * @Date: 2020-03-29 22:44:32
- */ 
+ */
+
+/*
+ *    分析：记录师傅和弟子之间的关系，通过 DFS 确定其 power，得道者 power 
+ * 乘上倍数。
+ */
 #include <bits/stdc++.h>
 using namespace std;
 #define MAXN 100002
