@@ -6,48 +6,56 @@
  */ 
 #include <bits/stdc++.h>
 using namespace std;
-#define MAXN  100002
+#define MAXN  1002
 #define Inf 0x7FFFFFFE
 
 // #define idealist 1
+
 #define singletest 1
 
 /*******************   CODE   *********************/
 
-int n;
-set<int> num[52];
+int n, need;
+double x;
+struct pta
+{
+	double num;
+	double price;
+	double unit;
+} cakes[MAXN];
+
+int cmp(pta a, pta b)
+{
+	return a.unit > b.unit;
+}
 
 void solve()
-{
-  cin >> n;
-  int x, m, k;
+{	
+	cin >> n >> need;
+	for (int i=0; i<n; ++i)
+		cin >> cakes[i].num;
+	
+	for (int i=0; i<n; ++i)
+	{
+		cin >> x;
+		cakes[i].price = x;
+		cakes[i].unit = 1.0 * x / cakes[i].num;
+	}
+		
+	sort(cakes, cakes+n, cmp);
 
-  for (int i=1; i<=n; ++i)
-  {
-    cin >> m;
-    while (m--)
-    {
-      cin >> x;
-      num[i].insert(x);
-    }
-  }
-
-  cin >> k;
-  int a, b;
-
-  while (k--)
-  {
-    cin >> a >> b;
-    double ans = 0, tot = 0;
-    set<int>::iterator it;
-    for (it=num[b].begin(); it!=num[b].end(); it++)
-      if (num[a].find(*it) != num[a].end())
-        ans++;
-    tot = num[a].size() + num[b].size() - ans;
-
-    printf("%.2lf%%\n", ans*100 / tot);
-  }
-  
+	double res = 0;
+	for(int i=0; i<n; ++i)
+	{
+		if (need <= cakes[i].num)
+		{
+			res += need * cakes[i].unit;
+			break;
+		}
+		res += cakes[i].num * cakes[i].unit;
+		need -= cakes[i].num;
+	}
+	printf("%.2lf\n", res);
 }
 
 
@@ -58,7 +66,7 @@ int main()
 	freopen("input.in", "r", stdin);
 #endif
 
-	int T;    
+	int T;
 #ifndef singletest
 	cin >> T;
 #endif
@@ -67,9 +75,9 @@ int main()
 	T = 1;
 #endif
 
-  for(;T;--T)
+	for(;T;--T)
 		solve();
-  
+	
   return 0;
 }
 
