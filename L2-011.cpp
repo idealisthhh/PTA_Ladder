@@ -28,7 +28,7 @@ void setorder(int pos, int preS, int inS, int preE, int inE)
   int t = inS;
   while (LNR[t] != f) t++;
   int l = t - inS;
-  setorder(2*pos+1, preS+1, inS, preE+l, t-1);
+  setorder(2*pos+1, preS+1, inS, preS+l, t-1);
   setorder(2*pos, l+preS+1, t+1, preE, inE);
 }
 
